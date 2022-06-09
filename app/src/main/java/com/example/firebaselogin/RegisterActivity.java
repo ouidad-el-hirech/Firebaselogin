@@ -15,7 +15,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    private EditText email, password;
+    private EditText email, password, fullnam, ag;
     private Button btnRegister;
     private TextView textLogin;
     @Override
@@ -25,6 +25,8 @@ public class RegisterActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         email = findViewById(R.id.register_email);
         password = findViewById(R.id.register_password);
+        fullnam = findViewById(R.id.fullName);
+        ag = findViewById(R.id.age);
         btnRegister  = findViewById(R.id.register);
         textLogin = findViewById(R.id.text_login);
 
@@ -45,10 +47,18 @@ public class RegisterActivity extends AppCompatActivity {
     {
         String user = email.getText().toString().trim();
         String pass = password.getText().toString().trim();
+        String age = ag.getText().toString().trim();
+        String name = fullnam.getText().toString().trim();
+
         if(user.isEmpty())
         {            email.setError("Email can not be empty");        }
         if(pass.isEmpty())
         {            password.setError("Password can not be empty");        }
+        if(age.isEmpty())
+        {            ag.setError("age can not be empty");        }
+        if(name.isEmpty())
+        {            fullnam.setError("age can not be empty");        }
+
         else
         {
             mAuth.createUserWithEmailAndPassword(user, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
