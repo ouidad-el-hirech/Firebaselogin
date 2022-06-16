@@ -10,9 +10,9 @@
             android:icon="@drawable/ic_launcher_foreground"
             android:title="home"></item>
         <item
-            android:id="@+id/nav_ddaa"
+            android:id="@+id/update_profile"
             android:icon="@drawable/ic_launcher_foreground"
-            android:title="home"></item>
+            android:title="update profile"></item>
 
     </group>
 
@@ -23,6 +23,7 @@
                 android:id="@+id/logout_btn"
                 android:icon="@drawable/ic_launcher_foreground"
                 android:title="log out"></item>
+
         </menu>
     </item>
 </menu>

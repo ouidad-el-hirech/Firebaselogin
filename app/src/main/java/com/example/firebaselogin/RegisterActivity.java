@@ -1,78 +1,56 @@
 package com.example.firebaselogin;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class RegisterActivity extends AppCompatActivity {
-    private FirebaseAuth mAuth;
-    private EditText email, password, fullnam, ag;
-    private Button btnRegister;
-    private TextView textLogin;
+    //Variables
+    TextInputLayout regName, regUsername, regEmail, regPhoneNo, regPassword;
+    Button regBtn, regToLoginBtn;
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
+
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        mAuth = FirebaseAuth.getInstance();
-        email = findViewById(R.id.register_email);
-        password = findViewById(R.id.register_password);
-        fullnam = findViewById(R.id.fullName);
-        ag = findViewById(R.id.age);
-        btnRegister  = findViewById(R.id.register);
-        textLogin = findViewById(R.id.text_login);
+        //Hooks to all xml elements in activity_sign_up.xml
+        regUsername = findViewById(R.id.reg_username);
+        regName = findViewById(R.id.reg_name);
+        regEmail = findViewById(R.id.reg_email);
+        regPhoneNo = findViewById(R.id.reg_phoneNo);
+        regPassword = findViewById(R.id.reg_password);
+        regBtn = findViewById(R.id.reg_btn);
+        regToLoginBtn = findViewById(R.id.reg_login_btn);
+        //Save data in FireBase on button click
 
-        btnRegister.setOnClickListener(new View.OnClickListener() {
+        regBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Register();
+            public void onClick(View view) {
+                rootNode = FirebaseDatabase.getInstance();
+                reference = rootNode.getReference("users");
+                //Get all the values
+                String username = regUsername.getEditText().getText().toString();
+                String email = regEmail.getEditText().getText().toString();
+                String phoneNo = regPhoneNo.getEditText().getText().toString();
+                String password = regPassword.getEditText().getText().toString();
+                String name = regName.getEditText().getText().toString();
+                UserHelperClass helperClass = new UserHelperClass(name,username, email, phoneNo, password);
+                reference.child(name).setValue(helperClass);
             }
-        });
-
-        textLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-            }
-        });    }
-    private void Register()
-    {
-        String user = email.getText().toString().trim();
-        String pass = password.getText().toString().trim();
-        String age = ag.getText().toString().trim();
-        String name = fullnam.getText().toString().trim();
-
-        if(user.isEmpty())
-        {            email.setError("Email can not be empty");        }
-        if(pass.isEmpty())
-        {            password.setError("Password can not be empty");        }
-        if(age.isEmpty())
-        {            ag.setError("age can not be empty");        }
-        if(name.isEmpty())
-        {            fullnam.setError("age can not be empty");        }
-
-        else
-        {
-            mAuth.createUserWithEmailAndPassword(user, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful())
-                    {
-                        Toast.makeText(RegisterActivity.this, "User registered successfully", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
-                    }
-                    else
-                    {
-                        Toast.makeText(RegisterActivity.this, "Registration Failed"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }  });
-        }
-    }}
+        });//Register Button method end
+    }//onCreate Method End
+    public void tologin(View view) {
+        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+    }
+}

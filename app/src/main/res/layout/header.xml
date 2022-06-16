@@ -2,27 +2,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:background="@color/purple_500"
+    android:layout_height="250dp"
+    android:background="#74b9ff"
     android:gravity="bottom"
     android:padding="20dp">
+
     <ImageView
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:src="@drawable/ic_launcher_foreground"/>
+        android:layout_width="140dp"
+        android:layout_height="120dp"
+        android:src="@drawable/logoo" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/indigo_daisy"
         android:text="Rahtek hya Rahtna"
-        android:textColor="#070707"
-        android:textSize="24sp"/>
+        android:textColor="#0F084A"
+        android:textSize="34sp"
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
-        android:textColor="#070707"
         android:text="www.rahty.com"
+        android:layout_marginLeft="10dp"
+        android:textColor="#070707"
         android:textSize="14sp" />
 
 </LinearLayout>

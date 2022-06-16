@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserProfile"
+    android:orientation="vertical"
+    >
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:padding="20dp"
+    android:background="#74b9ff">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/logoo" />
+
+    <TextView
+        android:id="@+id/full_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/image"
+        android:fontFamily="@font/indigo_daisy"
+        android:includeFontPadding="false"
+        android:text="ouidad el hirech "
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rahty"
+        android:textSize="14sp"
+        android:fontFamily="@font/roboto_regular"
+        android:layout_toRightOf="@+id/image"
+        android:layout_below="@+id/full_name"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        />
+
+</RelativeLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-100dp"
+        android:layout_width="match_parent"
+        android:padding="20dp">
+
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:layout_marginTop="90dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:hint="Full Name"
+            android:id="@+id/full_name_profile"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:drawableLeft="@drawable/account"
+                android:drawablePadding="16dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:hint="email"
+            android:id="@+id/email_profile"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:drawableLeft="@drawable/ic_baseline_email_24"
+                android:drawablePadding="16dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:hint="phone"
+            android:id="@+id/phone_profile"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:drawableLeft="@drawable/phone"
+                android:drawablePadding="16dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:hint="password"
+            android:id="@+id/password_profile"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:drawableLeft="@drawable/password"
+                android:drawablePadding="16dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+</LinearLayout>
+    <Button
+        android:onClick="update"
+        android:layout_marginTop="2sp"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="28dp"
+        android:backgroundTint="@color/blue"
+        android:text="Update"
+        android:textColor="#fff"
+        android:transitionName="button_tran"
+        />
+</LinearLayout>
